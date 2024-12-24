@@ -1,0 +1,73 @@
+[
+    {
+        "type": "function",
+        "name": "verifySignature",
+        "inputs": [
+            {
+                "name": "message",
+                "type": "bytes",
+                "internalType": "bytes"
+            },
+            {
+                "name": "requireUserVerification",
+                "type": "bool",
+                "internalType": "bool"
+            },
+            {
+                "name": "webAuthnSignature",
+                "type": "tuple",
+                "internalType": "struct WebAuthnSignature",
+                "components": [
+                    {
+                        "name": "authenticatorData",
+                        "type": "bytes",
+                        "internalType": "bytes"
+                    },
+                    {
+                        "name": "clientDataJSON",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "challengeIndex",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "typeIndex",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "r",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "s",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    }
+                ]
+            },
+            {
+                "name": "x",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "name": "y",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool",
+                "internalType": "bool"
+            }
+        ],
+        "stateMutability": "view"
+    }
+]
