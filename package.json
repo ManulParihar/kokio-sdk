@@ -1,0 +1,19 @@
+{
+  "name": "kokio-sdk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "exports": {
+    ".": "./dist/config.js"
+  },
+  "keywords": [],
+  "author": "ManulParihar",
+  "description": "SDK for Kokio smart contract suite",
+  "scripts": {},
+  "dependencies": {
+    "viem": "^2.21.57"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
