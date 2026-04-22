@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org/'
 
       - name: Get version from package.json
         id: pkg
@@ -27,16 +27,16 @@ jobs:
           VERSION=$(node -p "require('./package.json').version")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
+      - name: Install deps (also runs postinstall)
+        run: npm install -g npm@latest
+
+      - name: Publish to npm
+        run: NODE_AUTH_TOKEN="" npm publish --access public --provenance
+
       - name: Create Git tag
         run: |
           git tag v${{ steps.pkg.outputs.version }}
           git push origin v${{ steps.pkg.outputs.version }}
-
-      - name: Install deps (also runs postinstall)
-        run: npm install
-
-      - name: Publish to npm
-        run: NODE_AUTH_TOKEN="" npm publish --access public
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
