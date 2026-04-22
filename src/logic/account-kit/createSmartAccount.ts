@@ -15,7 +15,7 @@ import { DeviceWallet, DeviceWalletFactory } from "../../abis/index.js";
 import { alchemyGasManagerMiddleware } from "@account-kit/infra";
 
 import { decodeAttestationObject, decodeClientDataJSON, isoBase64URL, parseAuthenticatorData } from "@simplewebauthn/server/helpers";
-import { Passkey, PasskeyGetResult } from "react-native-passkey";
+import { Passkey, PasskeyGetRequest, PasskeyGetResult } from "react-native-passkey";
 import { p256 } from "@noble/curves/nist.js";
 
 type BrokenPasskeyGetResult = PasskeyGetResult | string;
@@ -35,15 +35,17 @@ enum AuthenticatorTransport {
 ** This is exactly how the WebAuthn.sol contract needs it to be.
 */
 export const _stamp = async (credentialId: string, rpId: string, payload: Hex): Promise<WebAuthnSignature> => {
-	const signingOptions = {
-		challenge: isoBase64URL.fromBuffer((hexToBytes(payload) as unknown) as Uint8Array<ArrayBuffer> ), // Base64URL of the raw EIP-191 hash bytes
+	const signingOptions: PasskeyGetRequest = {
+		challenge: isoBase64URL.fromBuffer(
+			(hexToBytes(payload) as unknown) as Uint8Array<ArrayBuffer>
+		),
 		allowCredentials: [{
 			id: credentialId,
 			type: "public-key",
 			transports: [AuthenticatorTransport.internal]
 		}],
-		rpId: rpId,
-		userVerification: "required"
+			rpId,
+			userVerification: "required"
 	};
 
 	let authenticationResult;
