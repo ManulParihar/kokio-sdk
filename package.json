@@ -22,14 +22,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Blockchain-Powered-eSIM/kokio-sdk.git"
+    "url": "git+https://github.com/ManulParihar/kokio-sdk.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Blockchain-Powered-eSIM/kokio-sdk/issues"
+    "url": "https://github.com/ManulParihar/kokio-sdk/issues"
   },
-  "homepage": "https://github.com/Blockchain-Powered-eSIM/kokio-sdk#readme",
+  "homepage": "https://github.com/ManulParihar/kokio-sdk#readme",
   "devDependencies": {
     "dotenv": "^16.5.0",
     "typescript": "^5.7.3"
