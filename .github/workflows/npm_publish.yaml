@@ -31,6 +31,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Publish to npm
+        env: NPM_CONFIG_PROVENANCE: true
         run: npm publish --access public --provenance
 
       - name: Create Git tag
